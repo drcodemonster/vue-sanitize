@@ -12,7 +12,12 @@
 
       Vue.prototype.$sanitize = function (dirty) {
         var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-        return sanitizeHtml(dirty, opts || defaultOptions);
+
+        var text_string = sanitizeHtml(dirty, opts || defaultOptions);
+        text_string = text_string.replace(/&amp;/g, '&');
+        text_string = text_string.replace(/&lt;/g, '<');
+        text_string = text_string.replace(/&gt;/g, '>');
+        return text_string;
       };
     },
 

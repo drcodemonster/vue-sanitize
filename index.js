@@ -7,8 +7,6 @@ const VueSanitize = {
     Vue.prototype.$sanitize = (dirty, opts = null) => {
       let text_string = sanitizeHtml(dirty, opts || defaultOptions);
       text_string = text_string.replace(/&amp;/g, '&');
-      text_string = text_string.replace(/&lt;/g, '<');
-      text_string = text_string.replace(/&gt;/g, '>');
       return text_string;
     };
   },
